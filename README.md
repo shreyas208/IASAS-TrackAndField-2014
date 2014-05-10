@@ -1,6 +1,6 @@
-IASAS-Basketball-2014
+IASAS-TrackAndField-2014
 =====================
 
-Full Website for IASAS Basketball tournament hosted at JIS
+Full Website for IASAS Track and Field hosted at JIS
 
 -Bootstrap 3

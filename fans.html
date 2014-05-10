@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Shreyas Patil">
+
+    <title>Fans | IASAS Track and Field 2014</title>
+    <link rel="shortcut icon" href="./img/trackandfield.png"/>
+
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49750329-1', 'jisedu.or.id');
+  ga('send', 'pageview');
+
+</script>
+
+    <script type='text/javascript'>
+        //this will be executed after we "fetch" the contents of a spreadsheet. The json parameter will hold our spreadsheet's data
+        function displayContent(json) {
+            //Create an empty string to hold the HTML. We will put table data here.
+            var len = parseInt(json.feed.entry.length) 
+            
+            var description=''
+            var videoembed=''
+            
+            for (var i=0; i<len-1; i++) {
+                videoembed += [
+                    '<div class="tab-pane fade" id="video-',
+                    i,
+                    '"><div class="col-lg-8 col-md-8 col-sm-12"><div class="video-container"><iframe width="100%" height="100%" src="http://www.youtube.com/embed/',
+                    json.feed.entry[i].gsx$videoembed.$t,
+                    '" frameborder="0" allowfullscreen></iframe></div></div></div>',
+                ].join('');  
+            }
+            for (var i=0; i<len-1; i++) {
+                description += [
+                    '<li><a href="#video-',
+                    i,
+                    '" data-toggle="tab">',
+                    json.feed.entry[i].gsx$description.$t,
+                    '</a></li>',
+                ].join('');  
+            }
+            
+            var videoembed_latest= '<div class="tab-pane fade in active" id="video-' + len + '"><div class="col-lg-8 col-md-8 col-sm-12"><div class="video-container"><iframe width="100%" height="100%" src="http://www.youtube.com/embed/' + json.feed.entry[i].gsx$videoembed.$t + '" frameborder="0" allowfullscreen></iframe></div></div></div>';
+            var description_latest= '<li class="active"><a href="#video-' + len + '" data-toggle="tab">' +  json.feed.entry[i].gsx$description.$t + ' <span class="label label-danger">New!</span></a></li>' ;
+            
+            document.getElementById('description').innerHTML = '<ul class="nav nav-pills nav-stacked">' + description + description_latest + '</ul>'
+            document.getElementById('videoembed').innerHTML = videoembed + videoembed_latest
+        }    
+    </script>
+      
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!--<link href="css/bootstrap-fans.min.css" rel="stylesheet">-->
+    <link href="/css/magnific-popup.css" rel="stylesheet">   
+  </head>
+<style> 
+body
+{
+background:url(./backgrounds/fans_purple.png);
+background-repeat:yes-repeat;
+}
+.video-container {     position: relative;  padding-bottom: 56.25%;     padding-top: 30px; height: 0; overflow:visible; }     
+.video-container iframe, .video-container object, .video-container embed  {     position: absolute;     top: 0;     left: 0;     width: 100%;     height: 100%; }
+
+.btn-fans {
+  color: white;
+  background-color: #843eb5;
+  border-color: #820088;
+}
+
+.btn-fans:hover,
+.btn-fans:focus,
+.btn-fans:active,
+.btn-fans.active,
+.open .dropdown-toggle.btn-fans {
+  color: white;
+  background-color: #915fb4;
+  border-color: #820088;
+}    
+</style>   
+  <body style="background-color: grey">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+          <a class="navbar-brand" href="index.html"><img src="./img/IASAS_TrackAndField_Logo_Navbar.png" width="23"><strong> IASAS</strong> Track and Field 2014</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:1em"><strong>Teams <b class="caret"></b></strong></a>
+              <ul class="dropdown-menu">
+                <li><a href="team-ISB.html">ISB</a></li>
+                <li><a href="team-ISKL.html">ISKL</a></li>
+                <li><a href="team-ISM.html">ISM</a></li>
+                <li><a href="team-JIS.html">JIS</a></li>
+                <li><a href="team-SAS.html">SAS</a></li>
+                <li><a href="team-TAS.html">TAS</a></li>
+              </ul>
+            </li>
+            <li><a href="schedule.html" style="font-size:1em"><strong>Schedule</strong></a></li>
+            <li><a href="fans.html" style="font-size:1em"><strong>Fans</strong></a></li>
+            <li><a href="photos.html" style="font-size:1em"><strong>Photos</strong></a></li> 
+            <li><a href="stream.html" style="font-size:1em"><strong>Stream</strong></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:1em"><strong>Results <b class="caret"></b></strong></a>
+                <ul class="dropdown-menu">
+                <li><a href="event-results.html" style="font-size:1em">Event Results</a></li>
+                <li><a href="results.html" style="font-size:1em">Final Results</a></li>
+                </ul>
+              </li>  
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+      
+    <div class="container" style="background:white">
+      
+      <div class="row">
+      
+        <div class="col-lg-12">
+          <h1 class="page-header">Fans <small>Show your support</small></h1>
+        </div>
+
+      </div><!-- /.row -->
+
+      <div class="row">
+      
+        <div class="col-lg-12">
+          <img class="img-responsive" src="./img/fans.jpg">
+            <br>
+        </div>
+          
+      </div><!-- /.row -->
+        </div><!--/Title container-->
+      
+      <br>
+      
+        <!--Caption The Picture-->
+      <!--<div class="container" style="background:white; padding-bottom: 20px">
+        <h3 class="page-header" id="poll">Caption the Photo!</h3>    
+          <div class="col-lg-6 coll-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+                <div class="parent-container">
+            <a href="./img/caption.jpg" class="image-link"><img class="img-responsive img-thumbnail" src="./img/caption.jpg"></a>
+            </div>
+            </div>
+          <div class="clearfix"></div>
+          <h4 style="text-align:center">Winner(s) of the <em>Caption the Photo</em> contest:</h4>
+        <p style="text-align:center"><em>"I believe I can fly!"</em><br>or<br><em>"Draw me like one of your French girls."</em></p>
+      </div>
+      
+      <br>-->
+        <!--Polls-->
+        <!--<div class="container" style="background:white">
+            
+            
+            <div class="col-lg-12">
+                <h3 class="page-header" id="poll">Polls</h3>
+
+            <ul class="nav nav-tabs">
+                <li><a href="#poll-1" data-toggle="tab">Poll 1</a></li>
+                <li><a href="#poll-2" data-toggle="tab">Poll 2</a></li>
+                <li><a href="#poll-3" data-toggle="tab">Poll 3</a></li>
+                <li><a href="#poll-4" data-toggle="tab">Poll 4</a></li>
+                <li><a href="#poll-5" data-toggle="tab">Poll 5</a></li>
+                <li class="active"><a href="#poll-6" data-toggle="tab">Poll 6</a></li>
+            </ul>
+            <br>    
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade" id="poll-1">
+                    <h4 style="text-align:center">Which team is the most attractive/good-looking?</h4>
+                    <p style="text-align:center">With 1600+ votes cast, the final verdict is in:</p>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <iframe src="./poll-1-results-boys.html" class="well well-sm" width="100%" height="295px"></iframe>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <iframe src="./poll-1-results-girls.html" class="well well-sm" width="100%" height="295px"></iframe>
+                    </div>
+                    
+                </div>
+                <div class="tab-pane fade" id="poll-2">
+                    <h4 style="text-align:center">What's your favorite basketball movie?</h4>
+                    <p style="text-align:center">A team of highly trained monkeys did the calculations and found the following highest rated movies:</p>
+                    <div class="col-xs-12">
+                        <iframe src="./poll-2-results.html" class="well well-sm" width="100%" height="240px"></iframe>
+                    </div>
+                    <p style="text-align:center">Special mentions: <em>High School Musical</em>, <em>More Than A Game</em>, <em>White Men Can't Jump</em> &amp; <em>Glory Road</em></p>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="tab-pane fade" id="poll-3">
+                    <h4 style="text-align:center">In your opinion, players from which team told the funniest joke?</h4>
+                    <p style="text-align:center">With the poll now closed, it can be confirmed that Ashley from the ISM Lady Bearcats team truly had the (lamest) funny joke</p>
+                    <div class="col-xs-12">
+                        <iframe src="./poll-3-results.html" class="well well-sm" width="100%" height="270px"></iframe>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="tab-pane fade" id="poll-4">
+                    <h4 style="text-align:center">Should there be an IASAS cheerleading squad?</h4>
+                    <p style="text-align:center">Let's think about this for next year!</p>
+                    <div class="col-xs-12">
+                        <iframe src="./poll-4-results.html" class="well well-sm" width="100%" height="145px"></iframe>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="tab-pane fade" id="poll-5">
+                    <h4 style="text-align:center">Which third season IASAS event are you looking forward to the most?</h4>
+                    <p style="text-align:center">JIS is hosting Cultural Convention as well as Track &amp; Field. See you there!</p>
+                    <div class="col-xs-12">
+                        <iframe src="./poll-5-results.html" class="well well-sm" width="100%" height="245px"></iframe>
+                    </div>
+                </div>
+                <div class="tab-pane fade in active" id="poll-6">
+                    <h4 style="text-align:center">Which teams are going to win in the Championship Games?</h4>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <iframe src="./poll-6-results-boys.html" class="well well-sm" width="100%" height="145px"></iframe>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <iframe src="./poll-6-results-girls.html" class="well well-sm" width="100%" height="145px"></iframe>
+                    </div>
+                </div>
+            </div>    
+        </div>
+      
+      <br>-->
+
+      <div class="container text-center" style="background:white; padding-bottom: 20px">
+        <h3><a href="http://jisfeedback.com/"></area>For IASAS track meet coverage from JIS's award-winning journalism club, Feedback, click here</a></h3>
+      </div><!--/container-->
+
+      <br>
+      
+      <!--Fan Messages-->
+      <div class="container" style="background:white; padding-bottom: 20px">
+        <h3 class="page-header" id="poll">Fan Messages</h3>
+        <table width="100%" style="text-align:center; padding-left:14px; border-right:50px">
+            <thead><tr>
+                <td width="10%"><h4>To</h4></td>
+                <td width="70%"><h4>Message</h4></td>
+                <td width="15%"><h4>Location</h4></td>
+                <td width="15%"><h4>From</h4></td>
+            </tr></thead>
+        </table>  
+        <iframe src="messages.html" class="well well-sm" width="100%" height="400px"></iframe>
+        <p style="text-align:center"><button type="button" class="btn btn-fans" data-toggle="modal" data-target="#messages-modal">Leave a message <i class="glyphicon glyphicon-chevron-right"></i></button></p>
+          
+        <p style="text-align: center">For performance reasons, only the last 50 messages will be shown here. View the full archives <a href="./message-archive.html">here</a></p>  
+                    <!-- Modal -->
+                    <div class="modal fade" id="messages-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Leave a message</h4>
+                            </div>
+                        <div class="modal-body">
+                            <iframe id="messages-well" src="https://docs.google.com/a/jisedu.or.id/forms/d/12Hu0nU6aqJU-JZHPi2rOCZkjcD1b1kx8TgcL-JUNx40/viewform" class="well well-sm" width="100%" height="700px"></iframe>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+      </div><!--/container-->
+      
+      <br>
+      
+      <!--Broadcast Videos-->
+      <!--<div class="container" style="background:white; padding-bottom: 20px">
+        <h3 class="page-header" id="poll">Interviews</h3>    
+            <div class="tab-content" id="videoembed"></div>    
+            <div class="col-lg-4 col-md-4 col-sm-12 text-center" style="padding-top:14px" id="description"></div>
+            
+            
+      </div>
+      
+      <br>-->
+      
+      <!--Twitter and Maps-->
+      <div class="container" style="background:white">
+      <div class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <h3 class="page-header"><img src="https://dev.twitter.com/sites/default/files/images_documentation/bird_blue_48.png" width="32"></h3>
+            <div align="center">
+                <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/search?q=lang%3Aen+iasas+OR+%40iasas+OR+%23iasas+OR+%40sas_ad+OR+%40boosterhut+OR+%40ismanilaad+OR+%40tpe_tigers+OR+%40iskl_hs_ad+OR+%40isbpanthers" data-widget-id="453751848323645440">Tweets about "lang:en iasas OR @iasas OR #iasas OR @sas_ad OR @boosterhut OR @ismanilaad OR @tpe_tigers OR @iskl_hs_ad OR @isbpanthers"</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </div>
+                <br>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <h3 class="page-header">Your Turn</h3>
+            <img class="img-responsive" src="img/hashtag-iasas.png">
+            <br>
+            <p>Tweet with the hashtag &#35;IASAS, comments, photos, shoutouts, whatever you want!</p>
+            <a height="50" href="https://twitter.com/intent/tweet?button_hashtag=IASAS" class="twitter-hashtag-button" data-size="large">Tweet #IASAS</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <h3 class="page-header"><img src="./img/iasas_logo_48px_transparent.png" width="32px"> Other Season 3 Sports</h3>
+          <p style="text-align:center">
+            <a href="http://iasas.sasclubs.com" target="_blank"><h4><img src="./img/softball_32px.png"> IASAS Softball at SAS <img src="./img/school_SAS_60px.png" width="32px"></h4></a>
+            <a href="http://iasas.sasclubs.com" target="_blank"><h4><img src="./img/badminton_32px.png"> IASAS Badminton at SAS <img src="./img/school_SAS_60px.png" width="32px"></h4></a>
+            <a href="http://iasasgolf2014.com/" target="_blank"><h4><img src="./img/golf_32px.png"> IASAS Golf at TAS <img src="./img/school_TAS_60px.png" width="32px"></h4></a>
+            </p>
+          </div>  
+ 
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    
+      
+    <div class="container">
+
+      <footer>
+        <div class="row" style="background:white; padding-top: 10px">
+          <div class="col-lg-10 col-md-10 col-sm-10">
+            <p><a href="https://www.jisedu.or.id/index.aspx">&copy; Jakarta International School 2014</a>, <small>by Shreyas Patil, inspired by Pranav Joneja</small></p>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <a href="mailto:33247@jisedu.or.id"><button type="button" class="btn btn-danger" style="width:110px;height:25px;padding-top:1px;padding-left:1px;padding-right:1px"><small>Report a Problem</small></button></a>
+          </div>
+        </div>
+      </footer>
+
+    </div><!-- /.container -->
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/modern-business.js"></script>
+    <script src="https://spreadsheets.google.com/feeds/list/0Ag48tSRbJ9WgdEMya18xRFU5cElsWDBHd2VYZ0lUUGc/od6/public/values?alt=json-in-script&amp;callback=displayContent" type="text/javascript"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>  
+    <script type="text/javascript">
+      $('.parent-container').magnificPopup({
+        delegate: 'a', // child items selector, by clicking on it popup will open
+        type: 'image',
+        mainClass: 'mfp-with-zoom',
+        zoom:{enabled:true},  
+        gallery:{ 
+            enabled:true,
+        }
+          // other options
+    });
+      </script>  
+      
+
+  </body>
+</html>
